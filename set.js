@@ -1,4 +1,4 @@
-let mySet = new Set();
+let mySet = new Set(); // 집합객체 생성
 
 mySet.add(3);
 mySet.add(5);
