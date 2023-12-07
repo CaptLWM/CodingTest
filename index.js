@@ -1,13 +1,13 @@
-let fs = require("fs");
-let input = fs.readFileSync("input.txt").toString().split("\n");
+// 빠른 A+B
+let fs = require('fs');
+let input = fs.readFileSync('input.txt').toString().split('\n');
 
-let [a,b] = input[0].split(' ').map(Number)
-let c = Number(input[1]);
+let testCase = Number(input[0]);
+let answer='';
 
-let totalMin = a*60+b+c;
-totalMin %= 1440;
+for(let t=1; t<=testCase; t++) {
+  let data = input[t].split(' ');
+  answer += Number(data[0]) + Number(data[1]) + `\n`;
+}
 
-let hour = parseInt(totalMin/60);
-let min = totalMin & 60;
-
-console.log(`${hour} ${min}`)
+console.log(answer)
