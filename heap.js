@@ -3,7 +3,6 @@
  * Expose `PriorityQueue`.
  */
 
-console.log('test');
 module.exports = PriorityQueue;
 
 /**
