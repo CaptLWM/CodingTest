@@ -32,6 +32,9 @@ queue.enqueue(3);
 // 삭제
 queue.dequeue();
 
+console.log(queue)
+// Queue { items: { '1': 2, '2': 3 }, headIndex: 1, tailIndex: 3 }
+
 // 먼저 들어온 순서대로 출력
 while (queue.getLength() != 0) {
   console.log(queue.dequeue());
