@@ -15,7 +15,7 @@ class Queue {
     return item;
   }
   peek() {
-    return this.items[this.headIndex]
+    return this.items[this.headIndex];
   }
   getLength() {
     return this.tailIndex - this.headIndex;
