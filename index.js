@@ -1,46 +1,27 @@
-let test = Array.from({length:100000}, ()=>Math.floor(Math.random()*1000));
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
 
-// 병합 수행 함수
-function merge(arr, left, mid, right) {
-  let i = left; // 왼쪽 배열의 첫번째
-  let j = mid + 1; // 오른쪽 배열의 첫번째
-  let k = left; // 결과 배열의 인덱스
-  while (i <= mid && j <= right) {
-    if (arr[i] <= arr[j]) sorted[k++] = arr[i++];
-    else sorted[k++] = arr[j++];
-  }
-  // 왼쪽 배열에 대한 처리가 다 끝난 경우
-  if (i > mid) {
-    for (; j <= right; j++) sorted[k++] = arr[j];
-  }
-  // 오른쪽 배열에 대한 처리가 다 끝난 경우
+let n = input[0];
+let k = [];
+for (let i = 1; i <= n; i++) {
+  k.push(input[i]);
+}
+
+k = [...new Set(k)];
+
+console.log(k);
+k.sort((a, b) => {
+  if (a.length !== b.length) return a.length - b.length;
   else {
-    for (; i <= mid; i++) sorted[k++] = arr[i];
+    if (a<b) return -1;
+    else if(a>b) return 1;
+    else return 0;
   }
-  // 정렬된 배열 결과를 원본 배열에 반영
-  for (let x = left; x <= right; x++) {
-    arr[x] = sorted[x];
-  }
+});
+
+let answer = "";
+for (let j = 0; j < k.length; j++) {
+  answer += k[j] + "\n";
 }
 
-// 병합 정렬 함수
-function mergeSort(arr, left, right) {
-  // 원소가 1개인 경우, 해당 배열은 정렬이 된 상태로 이해 가능
-  if (left < right) {
-    // 원소가 2개 이상이라면
-    let mid = parseInt((left + right) / 2); // 2개의 부분 배열로 분할(divide)
-    mergeSort(arr, left, mid); // 왼쪽 부분 배열 정렬 수행(conquer)
-    mergeSort(arr, mid + 1, right); // 오른쪽 부분 배열 정렬 수행(conquer)
-    merge(arr, left, mid, right); // 정렬된 2개의 배열을 하나로 병합(combine)
-  }
-}
-
-
-
-let startTime = new Date().getTime();
-// 임시 배열
-let sorted = Array.from({length:test.length}, ()=>0);
-mergeSort(test, 0, test.length-1);
-let endTime= new Date().getTime();
-
-console.log('time', endTime-startTime)
+console.log(answer);
