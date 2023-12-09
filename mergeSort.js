@@ -1,3 +1,5 @@
+let test = Array.from({length:100000}, ()=>Math.floor(Math.random()*1000));
+
 // 병합 수행 함수
 function merge(arr, left, mid, right) {
   let i = left; // 왼쪽 배열의 첫번째
@@ -26,9 +28,19 @@ function mergeSort(arr, left, right) {
   // 원소가 1개인 경우, 해당 배열은 정렬이 된 상태로 이해 가능
   if (left < right) {
     // 원소가 2개 이상이라면
-    let mid = paresInt((left + right) / 2); // 2개의 부분 배열로 분할(divide)
+    let mid = parseInt((left + right) / 2); // 2개의 부분 배열로 분할(divide)
     mergeSort(arr, left, mid); // 왼쪽 부분 배열 정렬 수행(conquer)
     mergeSort(arr, mid + 1, right); // 오른쪽 부분 배열 정렬 수행(conquer)
     merge(arr, left, mid, right); // 정렬된 2개의 배열을 하나로 병합(combine)
   }
 }
+
+
+
+let startTime = new Date().getTime();
+// 임시 배열
+let sorted = Array.from({length:test.length}, ()=>0);
+mergeSort(test, 0, test.length-1);
+let endTime= new Date().getTime();
+
+console.log('time', endTime-startTime)
