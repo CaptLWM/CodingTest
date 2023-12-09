@@ -15,7 +15,6 @@ function selectionSort(arr) {
   }
 }
 
-
 console.log("arr", arr);
 let startTime = new Date().getTime();
 selectionSort(arr);
