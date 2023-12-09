@@ -1,6 +1,6 @@
-let arr = Array.from({ legnth: 3000 }, () => Math.floor(Math.random() * 1000));
+let test = Array.from({length:30000}, ()=>Math.floor(Math.random()*1000));
 
-function selectionSort(arr) {
+function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     let minIndex = i; // rkwkd wkrdms dnjsthdml dlseprtm
     for (let j = i + 1; j < arr.length; j++) {
@@ -15,10 +15,8 @@ function selectionSort(arr) {
   }
 }
 
+startTime = new Date().getTime();
+bubbleSort(test);
+endTime= new Date().getTime();
 
-console.log("arr", arr);
-let startTime = new Date().getTime();
-selectionSort(arr);
-let endTime = new Date().getTime();
-
-console.log("start-end", endTime - startTime, "ms");
+console.log('time', endTime-startTime)
