@@ -147,3 +147,50 @@ for (let tc = 0; tc < testCase; tc++) {
   console.log(count);
   line += n + 1;
 }
+
+// 거리
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
+
+let city = Number(input[0]);
+let distance = input[1].split(' ').map(Number);
+let price = input[2].split(' ').map(Number);
+
+let minPrice = price[0];
+for (let i=0; i<city; i++) { // 비오름차순, 각 단계이후보다 싼걸로 대체(마지막 도시 제외)
+  minPrice = Math.min(minPrice, price[i]);
+  price[i] = minPrice;
+}
+
+let answer = BigInt(0);
+for(let i=0; i<city-1; i++) { // 마지막도시는 상관 없음
+  answer += BigInt(distance[i])*BigInt(price[i]);  
+}
+console.log(String(answer))
+
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
+
+let total = Number(input[0]);
+let re = [];
+for (let i = 1; i <= total; i++) {
+  re.push(input[i].split(" ").map(Number));
+}
+re.sort((a, b) => { // 종류시점 비교, 시작시점 비교
+  if(a[1] !== b[1]) return a[1]-b[1];
+  else return a[0]-b[0]
+});
+console.log(re)
+
+let cnt = 1;
+let cur = 0; // 첫번재 회의부터
+for (let i = 1; i < re.length; i++) {
+  if(re[cur][1] <= re[i][0]) {
+    console.log(re[cur])
+    cur = i; // 현재회의 끝나고 다음회의
+    cnt +=1;
+  }
+}
+
+console.log(cnt);
+
