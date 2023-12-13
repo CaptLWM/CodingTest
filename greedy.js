@@ -278,8 +278,10 @@ for (let i = 1; i <= T; i++) {
     let check2 = false; // 유사회문 체크
     let n = origin.length;
     for (let j = 0; parseInt(n / 2); j++) {
-      if (origin[j] !== origin[n - j - 1]) {
+      if (origin[j] !== origin[n - j - 1]) { // 대칭이 아닌 인덱스를 찾은 경우
+        // 앞쪽에 있는 해당 원소를 제거해 본 뒤에 회문 검사
         if (check(origin.slice(0, j) + origin.slice(j + 1, n))) check2 = true;
+        // 뒤쪽에 있는 해당 원소를 제거해 본 뒤에 회문 검사
         if (check(origin.slice(0, n - j - 1) + origin.slice(n - j, n)))
           check2 = true;
         break;
@@ -299,4 +301,49 @@ for (let i = 1; i <= T; i++) {
   // console.log(result)
 }
 
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
+
+// 박스체우기
+// x보다 작거나 같으면서 가장 가까운 2^i를 찾는 함수
+function nearestSquare(x) {
+  let i =1;
+  while((2**i)<=x) i+=1;
+  return i-1;
+}
+
+let length = Number(input[0].split(' ')[0]);
+let width  = Number(input[0].split(' ')[1]);
+let height  = Number(input[0].split(' ')[2]);
+let cubes = Array(20).fill(0); // 큐브 개수 들어갈 배열
+
+let n = Number(input[1]);
+for(let i=2; i<=n+1; i++) { // 배열에 큐브 개수 입력
+  let a= Number(input[i].split(' ')[0]);
+  let b = Number(input[i].split(' ')[1]);
+  cubes[a]=b;
+}
+
+// 가장 가까운 2^i 찾기
+let size = 19;
+size = nearestSquare(length);
+size = Math.min(size, nearestSquare(width));
+size = Math.min(size, nearestSquare(height));
+
+let res= 0;
+let used =0;
+
+for (let i=size; i>=0; i--) {
+  used *= 8; // 채널, 너비, 높이가 2씩 줄었으므로 큐브의 개수는 8배 증가
+  cur = (2**i); // 현재의 정육면체 큐브의 길이
+  // 채워 넣어야 할 큐브의 개수 계산
+  let required = parseInt(length/cur)*parseInt(width/cur)*parseInt(height/cur)-used;
+
+  let usage = Math.min(requred, cubes[i]); // 이번 단게에서 넣을 수 있는 큐브의 개수
+  res += usage;
+  used += usage;
+}
+
+if(used==length*width*height) console.log(res); // 박스를 가득 채운 경우
+else console.log(-1); // 박스를 가득 채우지 못한 경우
 
