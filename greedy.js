@@ -194,3 +194,109 @@ for (let i = 1; i < re.length; i++) {
 
 console.log(cnt);
 
+// 화살 문제(어려움)
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
+
+let total = Number(input[0]); // 풍선의 개수
+let bh = input[1].split(' ').map(Number); // 풍선의 높이
+let result =0; // 화살 수
+let arrow = new Array(1000001).fill(0) // 각 높이의 화살 수
+for(let x of bh) {
+  if(arrow[x]>0) { // 그 높이에 화살이 있는경우
+    arrow[x]-=1;
+    arrow[x-1] +=1;
+  } else {
+    arrow[x-1] +=1;
+    result += 1; // 화살 쏘기
+  }
+}
+console.log(result)
+
+//
+// 피보나치
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
+
+let total = Number(input[0]);
+let pibo = [0,1];
+
+// 피보나치 수열 생성
+while(pibo[pibo.length-1]<1e9) pibo.push(pibo[pibo.length-1]+pibo[pibo.length-2])
+
+for (let i=1; i<=total; i++) {
+  let n = Number(input[i])
+  let result = [] ;
+  let index = pibo.length -1; // 피보 맨 끝
+  while (n>0) {
+    if(n>=pibo[index]) {
+      n-=pibo[index];
+      result.push(pibo[index]);
+    }
+    index--;
+  }
+  let answer ='';
+  for (let k=result.length-1; k>=0; k-- ) {
+    answer+=result[k]+' ';
+  }
+  console.log(answer)
+}
+
+// 공나누기
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
+
+let n=Number(input[0].split(' ')[0]);
+let k=Number(input[0].split(' ')[1]);// N공, k바구니
+let sum = 0;
+
+for (let i=1; i<k+1; i++) {
+    sum+=i;
+}
+if(sum>n) console.log(-1);
+else {
+n-=sum;
+    if(n % k === 0) console.log(k-1);
+    else console.log(k)
+}
+
+// 유사회문
+let fs = require("fs");
+let input = fs.readFileSync("input.txt").toString().split("\n");
+
+let T = Number(input[0]); // 문자열 수
+
+const check = (x) => {
+  // 회문 체크
+  return x === x.split("").reverse().join("");
+};
+
+for (let i = 1; i <= T; i++) {
+  let origin = input[i];
+  if (check(origin)) console.log(0);
+  else {
+    let check2 = false; // 유사회문 체크
+    let n = origin.length;
+    for (let j = 0; parseInt(n / 2); j++) {
+      if (origin[j] !== origin[n - j - 1]) {
+        if (check(origin.slice(0, j) + origin.slice(j + 1, n))) check2 = true;
+        if (check(origin.slice(0, n - j - 1) + origin.slice(n - j, n)))
+          check2 = true;
+        break;
+      }
+    }
+    if (check2) console.log(1);
+    else console.log(2);
+  }
+  // let reverse = [...origin].reverse(); // 원본 분해 후 뒤집기
+  // let result = 0;
+
+  // for(let j=0; j<origin.length; j++) {
+  //   if(origin[j] !== reverse[j]) {
+  //     result += 1;
+  //   }
+  // }
+  // console.log(result)
+}
+
+
