@@ -23,11 +23,11 @@ else console.log(`${result + 1}번째`);
 
 // 반복문
 function binarySearch2(arr, target, start, end) {
-  while(start<=end) {
-    let mid = parseInt((start+end)/2);
-    if(arr[mid] ===target) return id;
-    else if(arr[mid]>target) end = mid -1;
-    else start = mid+1;
+  while (start <= end) {
+    let mid = parseInt((start + end) / 2);
+    if (arr[mid] === target) return id;
+    else if (arr[mid] > target) end = mid - 1;
+    else start = mid + 1;
   }
   return -1;
 }
