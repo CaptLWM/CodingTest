@@ -6,7 +6,7 @@ let input = fs.readFileSync("input.txt").toString().split("\n");
 let n = Number(input[0]); // 배열의 크기 N
 let k = Number(input[1]); // B[k]
 
-// 메모리 초과 이진탐색 써야함
+// 메모리 초과 이진탐색 써야함 ?
 // let arr =[];
 // for(let i=1; i<=n; i++) {
 //   for(let j=1; j<=n; j++) {
