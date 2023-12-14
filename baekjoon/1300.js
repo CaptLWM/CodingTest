@@ -24,18 +24,20 @@ let end = 10 ** 10; // 배열에 존재할 수 있는 가장 큰 값
 
 let result = 0;
 
-while(start<=end) { // 이진 탐색 수행(반복)
-  let mid = parseInt((start+end)/2); // 현재의 중간점
+while (start <= end) {
+  // 이진 탐색 수행(반복)
+  let mid = parseInt((start + end) / 2); // 현재의 중간점
   let total = 0; // mid보다 작거나 같은 데이터의 개수
-  for (let i=1; i<=n; i++) {
-    total += Math.min(parseInt(mid/i),n);
+  for (let i = 1; i <= n; i++) {
+    total += Math.min(parseInt(mid / i), n);
   }
-  if(total >=k){ // mid 보다 작거나 같은 데이터의 개수가 k이상이라면
-    result=mid; // resultdp rlfhr
-    end = mid -1;
-  } else { // mid 보다 작거나 같은 데이터의 개수가 k 미만이라면
+  if (total >= k) {
+    // mid 보다 작거나 같은 데이터의 개수가 k이상이라면
+    result = mid; // resultdp rlfhr
+    end = mid - 1;
+  } else {
+    // mid 보다 작거나 같은 데이터의 개수가 k 미만이라면
     start = mid + 1;
   }
 }
-console.log(result)
-
+console.log(result);
