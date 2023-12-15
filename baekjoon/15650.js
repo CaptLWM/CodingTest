@@ -1,7 +1,7 @@
 let fs = require("fs");
 let input = fs.readFileSync("input.txt").toString().split("\n");
 
-// N과 M 15650
+// N과 M 15650 조합
 /**  
   재귀함수를 호출할 때마다 선택되는 값이 커지도록 하는 것이 핵심
   하나의 조합을 트리에서 리프 노드까지의 경로로 생각

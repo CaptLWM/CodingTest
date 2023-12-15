@@ -1,7 +1,7 @@
 let fs = require("fs");
 let input = fs.readFileSync("input.txt").toString().split("\n");
 
-// N과 M 15649
+// N과 M 15649 순열
 let [n, m] = input[0].split(' ').map(Number);
 let arr = []; // 순열 계산하려는 원소가 담긴 배열
 for(let i=1; i<=n ; i++) arr.push(i);
