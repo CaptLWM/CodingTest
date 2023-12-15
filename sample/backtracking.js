@@ -3,6 +3,7 @@
 let n = 8; // 전체 맵(map)의 크기
 let queens = []; // 현재 체스판에 놓인 퀸(queen)의 위치 정보들
 
+// 조건을 확인하고
 function possible(x,y) { // (x,y) 위치에 퀸을 놓을 수 있는지 확인
   for (let [a,b] of queens) { // 현재까지 놓았던 모든 퀸(queen)의 위치를 하나씩 확인하며
       if(a===x || b===y) return false; // 행이나 열이 같으면 놓을 수 없음
@@ -12,6 +13,8 @@ function possible(x,y) { // (x,y) 위치에 퀸을 놓을 수 있는지 확인
 }
 
 let cnt = 0;
+
+// 백트래킹
 function dfs(row) {
   if(row===n) cnt += 1; // 퀸을 N개 배치할 수 있는 경우 카운트
   for(let i=0; i<n; i++) { // 현재 행에 존재하는 열을 하나씩 확인하며
@@ -24,3 +27,4 @@ function dfs(row) {
 
 dfs(0);
 console.log(cnt);
+

@@ -24,13 +24,13 @@ function dfs (arr, depth) {
     if(visited[i]) continue; // 이미 처리된 원소면 무시
     selected.push(i); // 현재 원소 선택
     console.log('select',selected)
-    
+
     visited[i] = true; // 현재 원소 방문 처리
     console.log('visited', visited)
     dfs(arr, depth+1); // 재귀함수 호출
     selected.pop();
     visited[i]=false;
-    
+
   }
 }
 
