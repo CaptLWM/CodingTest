@@ -27,7 +27,7 @@ for (let tc=1; tc<=testCase; tc++) {
   arr = [];
   for(let i=1; i<=n; i++) arr.push(i);
   dfs([],0);
-  console.log();
+  console.log(); // 줄바꿈
 }
 // let visited = new Array(n).fill(false); // 각 원소 index별 방문 여부
 // let selected = []; // 현재 순열에 포함된 원소
