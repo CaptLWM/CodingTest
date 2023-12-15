@@ -1,6 +1,3 @@
-let fs = require("fs");
-let input = fs.readFileSync("input.txt").toString().split("\n");
-
 // N-queen
 
 let n = 8; // 전체 맵(map)의 크기
@@ -27,4 +24,3 @@ function dfs(row) {
 
 dfs(0);
 console.log(cnt);
-
