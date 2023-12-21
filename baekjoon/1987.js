@@ -27,22 +27,3 @@ function dfs(depth, x, y) {
 visited.add(arr[0][0]); // 왼쪽 위에서 출발
 dfs(1,0,0);
 console.log(maxDepth)
-// let r = Number(input[0].split(' ')[0]) // 세로 칸수
-// let c = Number(input[0].split(' ')[1]) // 가로 칸수
-
-// let arr = []; // 체크용
-// let text = [];
-// for(let i=1; i<=r; i++) {
-//   let check =[];
-//   for(let j=0; j<c; j++) {
-//     check.push(input[i].split('')[j])
-//   }
-//   text.push(check)
-// }
-// for (let [a,b] of text) {
-//   console.log([a,b])
-// }
-
-
-
-// console.log(text.)
