@@ -1,7 +1,7 @@
 let fs = require("fs");
 let input = fs.readFileSync("input.txt").toString().split("\n");
 
-// 2961
+// 6603
 
 let n = Number(input[0]);
 let arr = [];
