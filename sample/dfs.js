@@ -1,6 +1,3 @@
-let fs = require("fs");
-let input = fs.readFileSync("input.txt").toString().split("\n");
-
 // dfs 메서드 정의
 function dfs(graph, v, visited) {
   // 현재 노드를 방문 처리
